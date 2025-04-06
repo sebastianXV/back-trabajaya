@@ -1,18 +1,17 @@
-const mysql = require('mysql');
+require('dotenv').config(); // 👈 Esto carga el .env
 
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '', 
-  database: 'bd_trabajaya'
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
-db.connect((err) => {
-  if (err) {
-    console.error('Error conectando a MySQL:', err);
-    return;
-  }
-  console.log('Conectado a la base de datos MySQL');
+connection.connect((err) => {
+  if (err) throw err;
+  console.log("Conectado a la base de datos MySQL de Railway");
 });
 
-module.exports = db;
+module.exports = connection;
