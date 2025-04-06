@@ -1,4 +1,4 @@
-require('dotenv').config(); // 👈 Esto carga el .env
+require('dotenv').config();
 
 const mysql = require("mysql");
 

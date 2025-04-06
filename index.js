@@ -1,11 +1,12 @@
+require('dotenv').config();
+
 const express = require('express');
 const http = require('http');
 const authRoutes = require('./routes/authRoutes');
 
 const app = express(); 
 
-const PORT = 3006;
-
+const PORT = process.env.PORT || 3006;
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*'); 
